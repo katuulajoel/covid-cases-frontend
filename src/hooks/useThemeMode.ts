@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { TStore } from "redux/store";
-import { toggleTheme } from "redux/theme/themeSlice";
+import { useDispatch } from "react-redux";
+import { toggleTheme } from "contexts/ThemeContext/themeSlice";
 
 import { THEMES } from "theme";
+import useTypedSelector from "./useTypedSelector";
 
 export const useThemeMode = (): { theme: THEMES; themeToggler: () => void } => {
-  const { theme } = useSelector((state: TStore) => state.theme);
+  const { theme } = useTypedSelector((state) => state.theme);
   const dispatch = useDispatch();
 
   const themeToggler = () => {

@@ -1,9 +1,17 @@
 const path = require("path");
+const dotenv = require('dotenv');
+const webpack = require('webpack');
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin");
 
+const env = dotenv.config().parsed;
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
+
 module.exports = {
-  name: "React-18_Boiler-Plate",
+  name: "React-18",
   mode: "development",
   entry: "./src/index.tsx",
   output: {
@@ -56,12 +64,13 @@ module.exports = {
       template: "./public/index.html",
     }),
     new ForkTsCheckerWebpackPlugin(),
+    new webpack.DefinePlugin(envKeys),
   ],
   devServer: {
     static: {
       directory: path.join(__dirname, "public"),
     },
     compress: true,
-    port: 3080,
+    port: 3080
   },
 };
