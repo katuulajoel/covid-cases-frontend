@@ -2,17 +2,15 @@ import React from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import GlobalStyle from "./theme/global";
-import ThemeContext from "./contexts/ThemeContext";
-import AppBar from "./components/AppBar";
+import ThemeContext from "contexts/ThemeContext";
+import TopBar from "components/TopBar";
 
 export default function App() {
 
   return (
     <ThemeContext>
-      <GlobalStyle />
       <CssBaseline />
-      <AppBar />
+      <TopBar />
       <Container>
         <Box sx={{ my: 2 }}>
           {[...new Array(48)]

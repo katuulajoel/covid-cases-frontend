@@ -16,9 +16,13 @@ export interface ThemeColors {
     white: string;
     black: string;
   };
+  primary: SimplePaletteColorOptions;
+  secondary: SimplePaletteColorOptions;
   text: Partial<TypeText & { dark: string; light: string }>;
   error?: SimplePaletteColorOptions;
   success?: SimplePaletteColorOptions;
+  link: SimplePaletteColorOptions;
+  border: SimplePaletteColorOptions;
   switch: {
     thumb: string;
     base: string;

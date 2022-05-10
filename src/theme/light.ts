@@ -12,6 +12,21 @@ export const palette: ThemeColors = {
     white: colors.common.white,
     black: colors.common.black,
   },
+  primary: {
+    main: '#e3f2fd',
+    light: '#f0effc',
+    dark: '#000075'
+  },
+  secondary: {
+    main: '#fe731e',
+    contrastText: colors.common.white
+  },
+  link: {
+    main: '#4363D8'
+  },
+  border: {
+    main: '#E0E0E0'
+  },
   text: {
     primary: "#253858",
     secondary: alpha("#42526E", 0.86),

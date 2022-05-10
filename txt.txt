@@ -1,1 +1,1 @@
-background-color: ${(props) => props.theme.palette.primary.main};
+background-color: ${elevation === 0 ? theme.palette.background.default : theme.palette.background.paper};

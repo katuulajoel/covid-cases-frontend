@@ -1,9 +1,10 @@
-import styled from "styled-components";
-import AppBar from "@mui/material/AppBar";
 import Switch from '@mui/material/Switch';
+import AppBar from "@mui/material/AppBar";
+import { styled } from '@mui/system';
 
-export const Container = styled(AppBar)`
-
+export const ImageLogo = styled('img')`
+  width: 100px;
+  margin-right: 20px;
 `;
 
 export const MaterialUISwitch = styled(Switch)(({ theme }) => ({

@@ -1,19 +1,28 @@
-import React from "react";
-import { ThemeProvider } from "styled-components";
+import React, { useEffect } from "react";
 import { useThemeMode } from "hooks/useThemeMode";
-import darkTheme from "theme/dark";
-import lightTheme from "theme/light";
+import { ThemeProvider } from "@mui/material";
+import muiTheme, { SettingsType } from "theme";
 
 interface Props {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
 const ThemeContext: React.FC = ({ children }: Props) => {
   const { theme } = useThemeMode();
 
-  const themeMode = theme === "dark" ? darkTheme : lightTheme;
+  console.log("theme", theme);
 
-  return <ThemeProvider theme={themeMode}><>{children}</></ThemeProvider>;
+  useEffect(() => {
+    console.log("theme", theme);
+  }, [theme])
+
+  const settings: SettingsType = { theme };
+
+  return (
+    <ThemeProvider theme={muiTheme(settings)}>
+      <>{children}</>
+    </ThemeProvider>
+  );
 };
 
 export default ThemeContext;
