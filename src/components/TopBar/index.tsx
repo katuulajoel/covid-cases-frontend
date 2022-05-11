@@ -12,6 +12,7 @@ import { useLocation } from "react-router-dom";
 import capitalizeFirstLetter from "utilities/string";
 
 import * as S from "./styles";
+import LanguageSwitcher from "components/LanguageSwitcher";
 
 interface Props {
   children: React.ReactElement;
@@ -46,6 +47,8 @@ function TopBar() {
               
               {currentRoute || t("appbar.title")}
             </Typography>
+
+            <LanguageSwitcher />
 
             <FormControlLabel
               control={<S.MaterialUISwitch sx={{ m: 1 }} defaultChecked={false} />}

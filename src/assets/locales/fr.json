@@ -1,0 +1,26 @@
+{
+  "translation": {
+    "appbar.title": "Traqueur Covid 19",
+    "appbar.theme_switch": "thème {{theme}}",
+
+    "home.header.confirmed" : "Cas confirmés",
+    "home.header.confirmed.description" : "Il s'agit du nombre total de personnes dont la COVID-19 a été confirmée par le test.",
+    "home.header.deaths" : "Cas de décès",
+    "home.header.deaths.description" : "Il s'agit du nombre total de personnes décédées du COVID-19 signalées par les établissements de santé.",
+
+    "home.select.country": "Choisissez le pays",
+    "home.select.continent": "Sélectionnez un continent",
+    "home.select.hint": "Conseil : sélectionnez un pays ou un continent",
+
+    "home.table.column.country": "Pays",
+    "home.table.column.confirmed": "Confirmé",
+    "home.table.column.deaths": "Décès",
+    "home.table.column.population": "Population",
+    "home.table.column.city": "Ville",
+    "home.table.column.continent": "Continent",
+    "home.table.column.last_update": "Dernière mise à jour",
+    "home.table.column.life_expectancy": "Espérance de vie",
+
+    "footer.copyright": "{{date}} MIT Katuula copyright"
+  }
+}
