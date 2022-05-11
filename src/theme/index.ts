@@ -23,7 +23,6 @@ export interface SettingsType {
 }
 
 const MuiTheme = (settings: SettingsType) => {
-  console.log('MuiTheme', settings)
   const themeConfig = themeConfigs[settings.theme]
   return createTheme({
     ...themeConfig

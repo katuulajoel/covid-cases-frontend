@@ -9,13 +9,6 @@ interface Props {
 
 const ThemeContext: React.FC = ({ children }: Props) => {
   const { theme } = useThemeMode();
-
-  console.log("theme", theme);
-
-  useEffect(() => {
-    console.log("theme", theme);
-  }, [theme])
-
   const settings: SettingsType = { theme };
 
   return (

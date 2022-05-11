@@ -2,14 +2,26 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 import { CovieCaseType } from "./types";
 
+interface summaryProps {
+  confirmed: number;
+    deaths: number;
+    continent: string;
+}
+
 interface CovidCasesProps {
   data: CovieCaseType[];
+  summary: summaryProps;
+  countries: string[];
+  continents: string[];
   isLoading: boolean;
   error: any;
 }
 
 const initialState: CovidCasesProps = {
   data: [],
+  summary: undefined,
+  countries: [],
+  continents: [],
   error: undefined,
   isLoading: false,
 };
@@ -24,9 +36,12 @@ const covidCasesReducer = createSlice({
     },
     getCovidCasesSuccess: (
       state: CovidCasesProps,
-      { payload }: PayloadAction<CovieCaseType[]>
+      { payload }: PayloadAction<{cases: CovieCaseType[], summary: summaryProps, countries: string[], continents: string[]}>
     ) => {
-      state.data = payload;
+      state.data = payload.cases;
+      state.summary = payload.summary;
+      state.countries = payload.countries;
+      state.continents = payload.continents;
       state.isLoading = false;
       state.error = undefined;
     },

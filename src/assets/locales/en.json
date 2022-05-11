@@ -1,6 +1,21 @@
 {
   "translation": {
     "appbar.title": "Covid 19 Tracker",
-    "appbar.theme_switch": "{{theme}} Theme"
+    "appbar.theme_switch": "{{theme}} Theme",
+
+    "home.select.country": "Select Country",
+    "home.select.continent": "Select Continent",
+    "home.select.hint": "Hint: Select a country or continent",
+
+    "home.table.column.country": "Country",
+    "home.table.column.confirmed": "Confirmed",
+    "home.table.column.deaths": "Deaths",
+    "home.table.column.population": "Population",
+    "home.table.column.city": "City",
+    "home.table.column.continent": "Continent",
+    "home.table.column.last_update": "Last Update",
+    "home.table.column.life_expectancy": "Life Expectancy",
+
+    "footer.copyright": "{{date}} Katuula copyright"
   }
 }

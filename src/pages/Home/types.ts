@@ -1,8 +1,12 @@
 export type CovieCaseType = {
-  id: number;
-  title: string;
-  body: string;
-  //...
+  country: string
+  city: string
+  continent: string
+  population: number
+  life_expectancy: number
+  confirmed: number
+  deaths: number
+  updated_at: string
 };
 
 export type GetCovidCaseApiPayload = {
