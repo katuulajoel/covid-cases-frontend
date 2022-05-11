@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 const Home = React.lazy(() => import("pages/Home"));
-const Continents = React.lazy(() => import("pages/Continents"));
+const CountryDetails = React.lazy(() => import("pages/Country"));
 const Loading = () => <p>Loading ...</p>;
 
 const routes = () => {
@@ -10,7 +10,7 @@ const routes = () => {
     <React.Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/continents" element={<Continents/>} />
+        <Route path="/:country" element={<CountryDetails/>} />
       </Routes>
     </React.Suspense>
   );

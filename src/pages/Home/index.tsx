@@ -17,6 +17,8 @@ import useCovidCases from "./useCovidCases";
 import CustomSelect from "components/CustomSelect";
 import { Typography } from "@mui/material";
 import Header from "./header";
+import { useNavigate } from "react-router-dom";
+import { CovidCaseType } from "./types";
 
 interface Column {
   id:
@@ -43,13 +45,14 @@ const Home = () => {
     countries,
     continents,
     selectedContinent,
-    selectCountry,
+    selectedCountry,
     getCountryCases,
     getContinentCases,
   } = useCovidCases();
   const { t } = useTranslation();
   const [page, setPage] = React.useState(0);
   const [rowsPerPage, setRowsPerPage] = React.useState(10);
+  const navigate = useNavigate();
 
   const columns: readonly Column[] = [
     { id: "#", label: "#", minWidth: 40 },
@@ -72,6 +75,7 @@ const Home = () => {
       id: "population",
       label: t("home.table.column.population"),
       align: "right",
+      format: (value: number) => value.toLocaleString("en-US"),
     },
     {
       id: "life_expectancy",
@@ -125,6 +129,10 @@ const Home = () => {
     setPage(0);
   };
 
+  const selectCountryHandler = (val: CovidCaseType) => {
+    navigate(val.country);
+  }
+
   if (isLoading) {
     return (
       <Box sx={{ width: "100%" }}>
@@ -140,7 +148,7 @@ const Home = () => {
         <Grid container spacing={3}>
           <Grid item xs={6}>
             <CustomSelect
-              value={selectCountry}
+              value={selectedCountry}
               callback={getCountryCases}
               options={countries}
               id="countries-select"
@@ -157,7 +165,7 @@ const Home = () => {
             />
           </Grid>
         </Grid>
-        <Typography variant="subtitle2" component={'span'}>
+        <Typography variant="subtitle2" component={'span'} color="error">
           {t("home.select.hint")}
         </Typography>
       </Box>
@@ -187,6 +195,8 @@ const Home = () => {
                       role="checkbox"
                       tabIndex={-1}
                       key={row["#"]}
+                      onClick={() => selectCountryHandler(row)}
+                      style={{ cursor: "pointer" }}
                     >
                       {columns.map((column) => {
                         const value = row[column.id];

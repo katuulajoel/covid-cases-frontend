@@ -6,7 +6,7 @@
     "home.header.confirmed" : "Confirmed cases",
     "home.header.confirmed.description" : "This is the total number of people who have been confirmed to have COVID-19 through the test.",
     "home.header.deaths" : "Death cases",
-    "home.header.deaths.description" : "This is the total number of people who have died from COVID-19 worldwide.",
+    "home.header.deaths.description" : "This is the total number of people who have died from COVID-19 reported by health facilities.",
 
     "home.select.country": "Select Country",
     "home.select.continent": "Select Continent",

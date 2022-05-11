@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import AppBar from "@mui/material/AppBar";
@@ -7,6 +7,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import useThemeMode from "hooks/useThemeMode";
 import { useTranslation } from "react-i18next";
 import logo from "assets/images/logo.zenysis.png";
+import { useLocation } from "react-router-dom";
 
 import capitalizeFirstLetter from "utilities/string";
 
@@ -28,15 +29,22 @@ function ElevationScroll(props: Props) {
 }
 
 function TopBar() {
+  const location = useLocation()
   const { theme, themeToggler } = useThemeMode();
   const { t } = useTranslation();
+
+  const currentRoute = useMemo(() => {
+    return decodeURI(location.pathname.slice(1));
+  }, [location.pathname]);
+
   return (
       <ElevationScroll>
         <AppBar>
           <Toolbar>
             <S.ImageLogo src={logo} alt="logo" />
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              {t("appbar.title")}
+              
+              {currentRoute || t("appbar.title")}
             </Typography>
 
             <FormControlLabel

@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { CovieCaseType, CovidCasesProps, SummaryProps } from "./types";
+import { CovidCaseType, CovidCasesProps, SummaryProps } from "./types";
 
 export const initialState: CovidCasesProps = {
   data: [],
@@ -38,7 +38,7 @@ const covidCasesReducer = createSlice({
       {
         payload,
       }: PayloadAction<{
-        cases: CovieCaseType[];
+        cases: CovidCaseType[];
         summary: SummaryProps[];
         countries: string[];
         continents: string[];

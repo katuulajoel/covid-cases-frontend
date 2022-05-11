@@ -2,21 +2,28 @@ import { useDispatch } from "react-redux";
 import { useCallback, useEffect, useState } from "react";
 import { getCovidCasesTrigger, getCountryCasesTrigger, getContinentCasesTrigger } from "./covidCasesSlice";
 import useTypedSelector from "hooks/useTypedSelector";
+import { CovidCaseType } from "./types";
 
-const useCovidCases = () => {
+const useCovidCases = (country?: string) => {
   const dispatch = useDispatch();
   const { data, summary, countries, continents, isLoading } = useTypedSelector((state) => state.covidCases);
-  const [selectCountry, setSelectCountry] = useState<string | null>();
+  const [selectedCountry, setSelectedCountry] = useState<string | null>();
   const [selectedContinent, setSelectedContinent] = useState<string | null>();
-
+  const [filteredCountry, setCountryFilter] = useState<CovidCaseType | null>();
 
   useEffect(() => {
     dispatch(getCovidCasesTrigger());
   }, []);
 
+  useEffect(() => {
+    if (country) {
+      setCountryFilter(data.find(element => element.country === country))
+    }
+  }, [country]);
+
   const getCountryCases = useCallback((val) => {
     console.log(val)
-    setSelectCountry(val);
+    setSelectedCountry(val);
     setSelectedContinent('');
     dispatch(getCountryCasesTrigger(val));
   }, []);
@@ -24,7 +31,7 @@ const useCovidCases = () => {
   const getContinentCases = useCallback((val) => {
     console.log(val)
     setSelectedContinent(val);
-    setSelectCountry('');
+    setSelectedCountry('');
     dispatch(getContinentCasesTrigger(val));
   }, []);
 
@@ -34,10 +41,11 @@ const useCovidCases = () => {
     countries: [...(countries || [])].sort(),
     continents: [...(continents || [])].sort(),
     isLoading,
-    selectCountry,
+    selectedCountry,
     selectedContinent,
     getContinentCases,
-    getCountryCases
+    getCountryCases,
+    filteredCountry
   };
 };
 

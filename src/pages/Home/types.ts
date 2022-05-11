@@ -1,4 +1,4 @@
-export type CovieCaseType = {
+export type CovidCaseType = {
   country: string
   city: string
   continent: string
@@ -16,7 +16,7 @@ export interface SummaryProps {
 }
 
 export interface CovidCasesProps {
-  data: CovieCaseType[];
+  data: CovidCaseType[];
   summary: SummaryProps[];
   countries: string[];
   continents: string[];
