@@ -6,6 +6,6 @@ export const getCountriesAndContinents = () => Get('/cases/countries_continents_
 
 export const getContinentTotals = () => Get('/cases/summary')
 
-export const getCountry = (action) => Get(`/cases/country/${action.payload}`)
+export const getCountryCases = (action) => Get(`/cases/country/${action.payload}`)
 
-export const getContinentCountries = (action) => Get(`/cases/continent/${action.payload}`)
+export const getContinentCases = (action) => Get(`/cases/continent/${action.payload}`)

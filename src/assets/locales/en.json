@@ -3,6 +3,11 @@
     "appbar.title": "Covid 19 Tracker",
     "appbar.theme_switch": "{{theme}} Theme",
 
+    "home.header.confirmed" : "Confirmed cases",
+    "home.header.confirmed.description" : "This is the total number of people who have been confirmed to have COVID-19 through the test.",
+    "home.header.deaths" : "Death cases",
+    "home.header.deaths.description" : "This is the total number of people who have died from COVID-19 worldwide.",
+
     "home.select.country": "Select Country",
     "home.select.continent": "Select Continent",
     "home.select.hint": "Hint: Select a country or continent",
@@ -16,6 +21,6 @@
     "home.table.column.last_update": "Last Update",
     "home.table.column.life_expectancy": "Life Expectancy",
 
-    "footer.copyright": "{{date}} Katuula copyright"
+    "footer.copyright": "{{date}} MIT Katuula copyright"
   }
 }

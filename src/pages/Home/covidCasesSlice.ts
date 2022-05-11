@@ -1,23 +1,8 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-import { CovieCaseType } from "./types";
+import { CovieCaseType, CovidCasesProps, SummaryProps } from "./types";
 
-interface summaryProps {
-  confirmed: number;
-    deaths: number;
-    continent: string;
-}
-
-interface CovidCasesProps {
-  data: CovieCaseType[];
-  summary: summaryProps;
-  countries: string[];
-  continents: string[];
-  isLoading: boolean;
-  error: any;
-}
-
-const initialState: CovidCasesProps = {
+export const initialState: CovidCasesProps = {
   data: [],
   summary: undefined,
   countries: [],
@@ -30,18 +15,39 @@ const covidCasesReducer = createSlice({
   name: "covidCases",
   initialState,
   reducers: {
+    getCountryCasesTrigger: (
+      state: CovidCasesProps,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.error = undefined;
+      state.isLoading = !state.isLoading;
+    },
+    getContinentCasesTrigger: (
+      state: CovidCasesProps,
+      { payload }: PayloadAction<string>
+    ) => {
+      state.error = undefined;
+      state.isLoading = !state.isLoading;
+    },
     getCovidCasesTrigger: (state: CovidCasesProps) => {
       state.error = undefined;
       state.isLoading = !state.isLoading;
     },
     getCovidCasesSuccess: (
       state: CovidCasesProps,
-      { payload }: PayloadAction<{cases: CovieCaseType[], summary: summaryProps, countries: string[], continents: string[]}>
+      {
+        payload,
+      }: PayloadAction<{
+        cases: CovieCaseType[];
+        summary: SummaryProps[];
+        countries: string[];
+        continents: string[];
+      }>
     ) => {
       state.data = payload.cases;
-      state.summary = payload.summary;
-      state.countries = payload.countries;
-      state.continents = payload.continents;
+      state.summary = payload.summary || state.summary;
+      state.countries = payload.countries || state.countries;
+      state.continents = payload.continents || state.continents;
       state.isLoading = false;
       state.error = undefined;
     },
@@ -55,6 +61,12 @@ const covidCasesReducer = createSlice({
   },
 });
 
-export const { getCovidCasesTrigger, getCovidCasesSuccess, getCovidCasesError } = covidCasesReducer.actions;
+export const {
+  getCountryCasesTrigger,
+  getContinentCasesTrigger,
+  getCovidCasesTrigger,
+  getCovidCasesSuccess,
+  getCovidCasesError,
+} = covidCasesReducer.actions;
 
 export default covidCasesReducer.reducer;

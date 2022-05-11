@@ -9,6 +9,21 @@ export type CovieCaseType = {
   updated_at: string
 };
 
+export interface SummaryProps {
+  confirmed: number;
+  deaths: number;
+  continent: string;
+}
+
+export interface CovidCasesProps {
+  data: CovieCaseType[];
+  summary: SummaryProps[];
+  countries: string[];
+  continents: string[];
+  isLoading: boolean;
+  error: any;
+}
+
 export type GetCovidCaseApiPayload = {
   id: number;
 };

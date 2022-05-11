@@ -16,6 +16,7 @@ import { useTranslation } from "react-i18next";
 import useCovidCases from "./useCovidCases";
 import CustomSelect from "components/CustomSelect";
 import { Typography } from "@mui/material";
+import Header from "./header";
 
 interface Column {
   id:
@@ -37,6 +38,7 @@ interface Column {
 const Home = () => {
   const {
     data,
+    summary,
     isLoading,
     countries,
     continents,
@@ -133,6 +135,7 @@ const Home = () => {
 
   return (
     <>
+      <Header summary={summary} />
       <Box sx={{ width: "100%" }} mb={2}>
         <Grid container spacing={3}>
           <Grid item xs={6}>

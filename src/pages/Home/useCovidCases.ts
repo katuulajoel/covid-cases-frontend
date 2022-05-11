@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { getCovidCasesTrigger } from "./covidCasesSlice";
+import { useCallback, useEffect, useState } from "react";
+import { getCovidCasesTrigger, getCountryCasesTrigger, getContinentCasesTrigger } from "./covidCasesSlice";
 import useTypedSelector from "hooks/useTypedSelector";
 
 const useCovidCases = () => {
@@ -18,19 +18,21 @@ const useCovidCases = () => {
     console.log(val)
     setSelectCountry(val);
     setSelectedContinent('');
+    dispatch(getCountryCasesTrigger(val));
   }, []);
 
   const getContinentCases = useCallback((val) => {
     console.log(val)
     setSelectedContinent(val);
     setSelectCountry('');
+    dispatch(getContinentCasesTrigger(val));
   }, []);
 
   return {
     data,
     summary,
-    countries: [...countries].sort(),
-    continents: [...continents].sort(),
+    countries: [...(countries || [])].sort(),
+    continents: [...(continents || [])].sort(),
     isLoading,
     selectCountry,
     selectedContinent,
